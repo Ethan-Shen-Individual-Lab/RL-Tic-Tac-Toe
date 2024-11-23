@@ -1,0 +1,93 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.game-container {
+    text-align: center;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    gap: 5px;
+    margin: 20px auto;
+    position: relative;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    border: 2px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.cell.taken {
+    pointer-events: none;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* 胜利线条样式 */
+.winning-line {
+    position: absolute;
+    background-color: #4CAF50;
+    transition: all 0.3s ease-in-out;
+}
+
+.horizontal-line {
+    height: 4px;
+    width: 300px;
+}
+
+.vertical-line {
+    width: 4px;
+    height: 300px;
+}
+
+.diagonal-1, .diagonal-2 {
+    width: 420px;  /* 约为 300 * √2 */
+    height: 4px;
+    transform-origin: center;  /* 确保从中心旋转 */
+}
+
+/* 响应式设计 */
+@media (max-width: 400px) {
+    .board {
+        grid-template-columns: repeat(3, 80px);
+        gap: 3px;
+    }
+    
+    .cell {
+        width: 80px;
+        height: 80px;
+        font-size: 1.5rem;
+    }
+    
+    .winning-line {
+        display: none;
+    }
+} 
