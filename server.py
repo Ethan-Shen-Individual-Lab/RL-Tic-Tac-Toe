@@ -1,14 +1,30 @@
 import asyncio
 import websockets
 import json
-from agent import TicTacToeAgent
+from agent import TicTacToeAgent, TicTacToe, QLearningAgent, train
 import http.server
 import socketserver
 import threading
 import random
+import os
 
-# 创建 AI agent 实例
-agent = TicTacToeAgent()
+def init_agent():
+    # 如果不存在预训练模型，先训练一个
+    if not os.path.exists('q_table.pkl'):
+        print("No pre-trained model found. Training new model...")
+        env = TicTacToe()
+        agent = QLearningAgent()
+        train(agent, env, episodes=50000)
+        agent.save_q_table('q_table.pkl')
+        print("Training completed and saved!")
+    
+    # 创建 AI agent 实例
+    return TicTacToeAgent()
+
+# 在服务器启动前先初始化 AI
+print("Initializing AI agent...")
+agent = init_agent()
+print("AI agent ready!")
 
 # WebSocket 服务器
 async def game_server(websocket, path="/"):
