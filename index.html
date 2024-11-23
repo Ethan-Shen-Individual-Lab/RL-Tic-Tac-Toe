@@ -9,7 +9,11 @@
 <body>
     <div class="game-container">
         <h1>井字棋游戏</h1>
-        <p id="status">当前玩家：X</p>
+        <div id="training-status" class="training-status">
+            正在训练AI，请稍候...
+            <div class="loading-spinner"></div>
+        </div>
+        <p id="status">等待AI训练完成...</p>
         <div class="board" id="board">
             <div class="cell" data-cell></div>
             <div class="cell" data-cell></div>
@@ -21,7 +25,7 @@
             <div class="cell" data-cell></div>
             <div class="cell" data-cell></div>
         </div>
-        <button id="restartButton">重置游戏</button>
+        <button id="restartButton" disabled>重置游戏</button>
     </div>
     <script src="script.js"></script>
 </body>
