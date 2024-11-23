@@ -91,3 +91,41 @@ button:hover {
         display: none;
     }
 } 
+
+/* 添加训练状态样式 */
+.training-status {
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.loading-spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 训练完成后隐藏训练状态 */
+.training-status.hidden {
+    display: none;
+}
+
+/* 禁用棋盘点击 */
+.board.disabled {
+    pointer-events: none;
+    opacity: 0.7;
+} 
